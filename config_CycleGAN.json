@@ -1,0 +1,96 @@
+{
+    "train_dataset_params": {
+        "dataset_name": "CARLA",
+        "dataset_path": "/drive/datasets/Crowd_Counting_Sim_Dataset_Updated_TopDown_MK3/train",
+        "sim_data_folder": "images",
+        "real_data_folder": "../../ShanghaiTech_Crowd_Counting_Dataset/part_B_final/train_data/images",
+        "stage": "train",
+        "clip_num": 5000,
+        "loader_params": {
+            "batch_size": 1,
+            "shuffle": true,
+            "num_workers": 1,
+            "pin_memory": true
+        },
+        "input_size": [256, 256],
+        "normalize_size": [1024, 512]
+    },
+    "val_dataset_params": {
+        "dataset_name": "CARLA",
+        "dataset_path": "/drive/datasets/Crowd_Counting_Sim_Dataset_Updated_TopDown_MK3/train",
+        "sim_data_folder": "images",
+        "real_data_folder": "../../ShanghaiTech_Crowd_Counting_Dataset/part_B_final/train_data/images",
+        "stage": "val",
+        "clip_num": 1000,
+        "loader_params": {
+            "batch_size": 1,
+            "shuffle": true,
+            "num_workers": 1,
+            "pin_memory": true
+        },
+        "input_size": [256, 256],
+        "normalize_size": [1024, 512]
+    },
+    "convert_dataset_params": {
+        "dataset_name": "Pedestron",
+        "dataset_path": "/drive/datasets/Crowd_Counting_Sim_Dataset_Updated_TopDown_MK3/train",
+        "sim_data_folder": "images",
+        "real_data_folder": "images",
+        "stage": "val",
+        "clip_num": 1000,
+        "loader_params": {
+            "batch_size": 1,
+            "shuffle": false,
+            "num_workers": 1,
+            "pin_memory": true
+        },
+        "input_size": [256, 256],
+        "normalize_size": [1024, 512]
+    },
+    "model_params": {
+        "model_name": "CycleGAN",
+        "is_train": true,
+        "max_epochs": 100,
+        "lr": 0.0002,
+        "momentum": 0.9,
+        "weight_decay": 1e-5,
+        "latent_dim": 128,
+        "img_size": 256,
+        "lambda_identity": 0.5,
+        "lambda_A": 10,
+        "lambda_B": 10,
+        "lambda_tv": 10,
+        "lambda_feat": 2e4,
+        "lambda_gray": 100,
+        "lambda_edge": 50,
+        "input_nc": 3,
+        "output_nc": 3,
+        "ngf": 64,
+        "ndf": 64,
+        "netD": "basic",
+        "netG": "resnet_9blocks",
+        "norm": "instance",
+        "no_dropout": "store_true",
+        "init_type": "normal",
+        "init_gain": 0.02,
+        "n_layers_D": 3,
+        "pool_size": 50,
+        "gan_mode": "lsgan",
+        "direction": "AtoB",
+        "export_path": "",
+        "checkpoint_path": "./checkpoints",
+        "load_checkpoint": -1,
+        "scheduler_epoch": -1,
+        "lr_policy": "step",
+        "lr_decay_iters": 10,
+        "epoch_list": [0, 43]
+    },
+    "visualization_params": {
+        "name": "CycleGAN"
+    },
+    "visualization_params_validation": {
+        "name": "CycleGAN"
+    },
+    "printout_freq": 200,
+    "model_update_freq": 1
+}

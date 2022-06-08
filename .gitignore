@@ -1,0 +1,4 @@
+*.pth
+checkpoints/*
+outputs/*
+plots/*
